@@ -8,5 +8,12 @@ pipeline {
         sleep 5
       }
     }
+    stage('Test') {
+      agent any
+      steps {
+        echo "testing"
+        sleep 5
+      }
+    }
   }
 }
