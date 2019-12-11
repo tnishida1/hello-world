@@ -12,7 +12,7 @@ pipeline {
       agent any
       steps {
         echo "testing"
-        sleep 5
+        sleep 6
       }
     }
   }
