@@ -5,7 +5,7 @@ pipeline {
       agent any
       steps {
         echo "building"
-        sleep 4
+        sleep 5
       }
     }
     stage('Test') {
