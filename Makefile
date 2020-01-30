@@ -1,5 +1,5 @@
 HELM_ARTIFACTORY=https://artifactory.toolchain.lead.prod.liatr.io/artifactory/helm
-HELM_HARBOR=https://harbor.sandbox.lead.prod.liatr.io/api/chartrepo
+HELM_HARBOR=https://harbor.toolchain.lead.sandbox.liatr.io/api/chartrepo
 
 GIT_BRANCH?=$(shell git rev-parse --abbrev-ref HEAD)
 VERSION=$(shell git describe --tags --dirty | cut -c 2-)
@@ -21,6 +21,6 @@ charts:
 	@helm init --client-only
 	@helm lint charts/hello-world
 	@helm package --version $(VERSION) --app-version v$(VERSION) charts/hello-world
-	@curl -f -X PUT -u $(HARBOR_CREDS) -T hello-world-$(VERSION).tgz $(HELM_REPOSITORY)/hello-world-$(VERSION).tgz
+	@curl -f -X PUT -u $(HARBOR_CREDS) -T hello-world-$(VERSION).tgz $(HELM_HARBOR)/jlab/charts
 
 .PHONY: charts
