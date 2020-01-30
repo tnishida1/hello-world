@@ -1,19 +1,32 @@
 pipeline {
-  agent none
-  stages {
-    stage('Build') {
-      agent any
-      steps {
-        echo "building"
-        sleep 4
-      }
+    agent {
+        label "lead-toolchain-skaffold"
     }
-    stage('Test') {
-      agent any
-      steps {
-        echo "testing"
-        sleep 5
-      }
+    stages {
+        stage('Images') {
+            when {
+                branch 'master'
+            }
+            steps {
+                container('skaffold') {
+                    sh "sleep 1200"
+                    sh "make build"
+                }
+            }
+        }
+        stage('Chart') {
+            when {
+                branch 'master'
+            }
+            steps {
+                container('skaffold') {
+                    sh "make charts"
+                    script {
+                        def version = sh ( script: "make version", returnStdout: true).trim()
+                        stageMessage "Published new chart: ${version}"
+                    }
+                }
+            }
+        }
     }
-  }
 }
