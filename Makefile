@@ -21,6 +21,9 @@ charts:
 	@helm init --client-only
 	@helm lint charts/hello-world
 	@helm package --version $(VERSION) --app-version v$(VERSION) charts/hello-world
-	@curl -f -X PUT -u $(HARBOR_CREDS) -T hello-world-$(VERSION).tgz $(HELM_HARBOR)/jlab/charts
+	@curl -f -X PUT -u $(HARBOR_CREDS) -T hello-world-$(VERSION).tgz $(HELM_HARBOR)/jlab2/charts
+	@curl -u $(HARBOR_CREDS) -X POST $(HELM_HARBOR)/jlab2/charts" \
+	 -H "Content-Type: multipart/form-data" \
+	 -F "chart=@hello-world-0.1.0.tgz;type=application/x-compressed-tar"
 
 .PHONY: charts

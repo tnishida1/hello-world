@@ -1,0 +1,3 @@
+curl -u $AUTH -X POST "https://harbor.toolchain.lead.sandbox.liatr.io/api/chartrepo/jlab/charts" \
+  -H "Content-Type: multipart/form-data" \
+  -F "chart=@hello-world-0.1.0.tgz;type=application/x-compressed-tar"
