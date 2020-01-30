@@ -14,6 +14,9 @@ HARBOR_CREDS ?= $(shell cat /root/.docker/config.json | sed -n 's/.*auth.*"\(.*\
 version:
 	@echo "$(VERSION)"
 
+harbor_creds:
+	@echo "$(HARBOR_CREDS)"
+
 build: 
 	@skaffold build 
 
