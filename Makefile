@@ -30,6 +30,6 @@ charts:
 	@helm package --version $(VERSION) --app-version v$(VERSION) charts/hello-world
 	@curl -u '$(HARBOR_CREDS)' -X POST $(HELM_HARBOR)/jlab/charts \
 	 -H "Content-Type: multipart/form-data" \
-	 -F "chart=@hello-world-0.1.0.tgz;type=application/x-compressed-tar"
+	 -F "chart=@hello-world-$(VERSION).tgz;type=application/x-compressed-tar"
 
 .PHONY: charts
