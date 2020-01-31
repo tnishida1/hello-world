@@ -25,7 +25,6 @@ build:
 	@skaffold build 
 
 charts: 
-	@git pull
 	@helm init --client-only
 	@helm lint charts/hello-world
 	@helm package --version $(VERSION) --app-version v$(VERSION) charts/hello-world
