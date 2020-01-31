@@ -10,12 +10,16 @@ PATCH_VERSION := $(word 3, $(subst ., ,$(word 1,$(subst -, , $(VERSION)))))
 NEW_VERSION ?= $(MAJOR_VERSION).$(MINOR_VERSION).$(shell echo $$(( $(PATCH_VERSION) + 1)) )
 ARTIFACTORY_CREDS ?= $(shell cat /root/.docker/config.json | sed -n 's/.*auth.*"\(.*\)".*/\1/p'| head -1 | base64 -d)
 HARBOR_CREDS ?= $(shell cat /root/.docker/config.json | sed -n 's/.*auth.*"\(.*\)".*/\1/p'| tail -1 | base64 -d)
+HC ?= $(shell cat /root/.docker/config.json | sed -n 's/.*auth.*"\(.*\)".*/\1/p'| tail -1)
 
 version:
 	@echo "$(VERSION)"
 
 harbor_creds:
 	@echo "$(HARBOR_CREDS)"
+
+hc:
+	@echo "$(HC)"
 
 build: 
 	@skaffold build 
