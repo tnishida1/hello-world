@@ -30,7 +30,7 @@ helm_push_artifactory:
 	@curl -f -X PUT -u $(ARTIFACTORY_CREDS) -T hello-world-$(VERSION).tgz $(HELM_ARTIFACTORY_SB)/hello-world-$(VERSION).tgz
 
 helm_push_harbor:
-	@curl -u '$(HARBOR_CREDS)' -X POST $(HELM_HARBOR)/jlab/charts \
+	@curl -u '$(HARBOR_CREDS)' -X POST $(HELM_HARBOR)/${product}/charts \
 	 -H "Content-Type: multipart/form-data" \
 	 -F "chart=@hello-world-$(VERSION).tgz;type=application/x-compressed-tar"
 
