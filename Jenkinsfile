@@ -28,8 +28,6 @@ pipeline {
                 }
             }
         }
-    }
-    stages {
         stage('Images Harbor') {
             when {
                 branch 'master'
