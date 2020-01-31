@@ -25,10 +25,10 @@ build:
 	@skaffold build 
 
 charts: 
+	@git pull
 	@helm init --client-only
 	@helm lint charts/hello-world
 	@helm package --version $(VERSION) --app-version v$(VERSION) charts/hello-world
-	@git pull
 	@curl -u '$(HARBOR_CREDS)' -X POST $(HELM_HARBOR)/jlab/charts \
 	 -H "Content-Type: multipart/form-data" \
 	 -F "chart=@hello-world-$(VERSION).tgz;type=application/x-compressed-tar"
