@@ -9,7 +9,6 @@ pipeline {
             }
             steps {
                 container('skaffold') {
-                    sh "sleep 1200"
                     sh "make build"
                 }
             }
