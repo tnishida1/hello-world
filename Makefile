@@ -26,7 +26,7 @@ charts:
 	@helm package --version $(VERSION) --app-version v$(VERSION) charts/hello-world
 
 helm_push_artifactory:
-	@curl -f -X PUT -u $(ARTIFACTORY_CREDS) -T hello-world-$(VERSION).tgz $(HELM_REPOSITORY)/hello-world-$(VERSION).tgz
+	@curl -f -X PUT -u $(ARTIFACTORY_CREDS) -T hello-world-$(VERSION).tgz $(HELM_ARTIFACTORY)/hello-world-$(VERSION).tgz
 
 helm_push_harbor:
 	@curl -u '$(HARBOR_CREDS)' -X POST $(HELM_HARBOR)/jlab/charts \
