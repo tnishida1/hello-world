@@ -13,21 +13,6 @@ pipeline {
                 }
             }
         }
-        stage('Chart Artifactory') {
-            when {
-                branch 'master'
-            }
-            steps {
-                container('skaffold') {
-                    sh "make charts"
-                    sh "make helm_push_artifactory"
-                    script {
-                        def version = sh ( script: "make version", returnStdout: true).trim()
-                        stageMessage "Published new chart: ${version}"
-                    }
-                }
-            }
-        }
         stage('Images Harbor') {
             when {
                 branch 'master'
