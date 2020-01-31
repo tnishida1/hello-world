@@ -21,7 +21,7 @@ pipeline {
                 container('skaffold') {
                     sh "printenv"
                     script {
-                        env.SKAFFOLD_DEFAULT_REPO = "https://harbor.toolchain.lead.sandbox.liatr.io/jlab"
+                        env.SKAFFOLD_DEFAULT_REPO = "harbor.toolchain.lead.sandbox.liatr.io/jlab"
                     }
                     sh "make build"
                 }
