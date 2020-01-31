@@ -19,6 +19,7 @@ pipeline {
             }
             steps {
                 container('skaffold') {
+                    sh "sleep 1200"
                     sh "make charts"
                     script {
                         def version = sh ( script: "make version", returnStdout: true).trim()
