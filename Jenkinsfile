@@ -3,16 +3,6 @@ pipeline {
         label "lead-toolchain-skaffold"
     }
     stages {
-        stage('Images Artifactory') {
-            when {
-                branch 'master'
-            }
-            steps {
-                container('skaffold') {
-                    sh "make build"
-                }
-            }
-        }
         stage('Images Harbor') {
             when {
                 branch 'master'
