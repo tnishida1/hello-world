@@ -3,16 +3,13 @@ pipeline {
         label "lead-toolchain-skaffold"
     }
     stages {
-        stage('Images Artifactory') {
+        stage('Images Harbor') {
             when {
                 branch 'master'
             }
             steps {
                 container('skaffold') {
                     sh "printenv"
-                    script {
-                       env.SKAFFOLD_DEFAULT_REPO = "artifactory.toolchain.lead.sandbox.liatr.io/docker-registry/jordan-ignitetest"
-                    }
                     sh "make build"
                 }
             }
