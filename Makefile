@@ -1,6 +1,6 @@
 HELM_ARTIFACTORY=https://artifactory.toolchain.lead.prod.liatr.io/artifactory/helm
 HELM_ARTIFACTORY_SB=https://artifactory.toolchain.lead.sandbox.liatr.io/artifactory/helm
-HELM_HARBOR=https://harbor.toolchain.lead.sandbox.liatr.io/api/chartrepo
+HELM_HARBOR=https://harbor.toolchain.lead.prod.liatr.io/api/chartrepo
 
 GIT_BRANCH?=$(shell git rev-parse --abbrev-ref HEAD)
 VERSION=$(shell git describe --tags --dirty | cut -c 2-)
