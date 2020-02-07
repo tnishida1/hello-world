@@ -26,6 +26,11 @@ charts:
 	@helm lint charts/hello-world
 	@helm package --version $(VERSION) --app-version v$(VERSION) charts/hello-world
 
+charts_v1:
+	@helm init --client-only
+	@helm lint charts/hello-world
+	@helm package --version 1.0.0 --app-version v1.0.0 charts/hello-world
+
 helm_push_artifactory:
 	@curl -f -X PUT -u $(ARTIFACTORY_CREDS) -T hello-world-$(VERSION).tgz $(HELM_ARTIFACTORY_SB)/hello-world-$(VERSION).tgz
 
@@ -33,5 +38,10 @@ helm_push_harbor:
 	@curl -u '$(HARBOR_CREDS)' -X POST $(HELM_HARBOR)/${product}/charts \
 	 -H "Content-Type: multipart/form-data" \
 	 -F "chart=@hello-world-$(VERSION).tgz;type=application/x-compressed-tar"
+
+helm_push_harbor_v1:
+	@curl -u '$(HARBOR_CREDS)' -X POST $(HELM_HARBOR)/${product}/charts \
+	 -H "Content-Type: multipart/form-data" \
+	 -F "chart=@hello-world-1.0.0.tgz;type=application/x-compressed-tar"
 
 .PHONY: charts
