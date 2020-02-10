@@ -18,6 +18,9 @@ version:
 harbor_creds:
 	@echo "$(HARBOR_CREDS)"
 
+artifactory_creds:
+	@echo "$(ARTIFACTORY_CREDS)"
+
 build: 
 	@skaffold build 
 

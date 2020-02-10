@@ -9,6 +9,7 @@ pipeline {
             }
             steps {
                 container('skaffold') {
+                    sh "make artifactory_creds"
                     sh "printenv"
                     sh "make build"
                 }
