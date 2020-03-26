@@ -4,3 +4,5 @@ build:
   artifacts:
   - image: hello-world
     context: .
+  - image: goodbye-world
+    context: .
