@@ -4,9 +4,6 @@ pipeline {
     }
     stages {
         stage('Images Harbor') {
-            when {
-                branch 'master'
-            }
             steps {
                 container('skaffold') {
                     sh "make artifactory_creds"
@@ -16,9 +13,6 @@ pipeline {
             }
         }
         stage('Chart Harbor') {
-            when {
-                branch 'master'
-            }
             steps {
                 container('skaffold') {
                     sh "make charts_v1"
