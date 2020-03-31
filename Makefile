@@ -1,6 +1,6 @@
 HELM_ARTIFACTORY=https://artifactory.toolchain.lead.prod.liatr.io/artifactory/helm
 HELM_ARTIFACTORY_SB=https://artifactory.toolchain.lead.sandbox.liatr.io/artifactory/helm
-HELM_HARBOR=https://harbor.toolchain.lead.prod.liatr.io/api/chartrepo
+HELM_HARBOR=https://harbor.toolchain.lead-new.sandbox.liatr.io/api/chartrepo
 
 GIT_BRANCH?=$(shell git rev-parse --abbrev-ref HEAD)
 VERSION=$(shell git describe --tags --dirty | cut -c 2-)
@@ -16,7 +16,7 @@ version:
 	@echo "$(VERSION)"
 
 harbor_creds:
-	@echo "$(HARBOR_CREDS)"
+	@echo '$(HARBOR_CREDS)'
 
 artifactory_creds:
 	@echo "$(ARTIFACTORY_CREDS)"
