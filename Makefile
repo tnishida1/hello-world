@@ -34,6 +34,10 @@ charts_v1:
 	@helm lint charts/hello-world
 	@helm package --version 1.0.0 --app-version v1.0.0 charts/hello-world
 
+charts_v1_helm3:
+	@helm lint charts/hello-world
+	@helm package --version 1.0.0 --app-version v1.0.0 charts/hello-world
+
 helm_push_artifactory:
 	@curl -f -X PUT -u $(ARTIFACTORY_CREDS) -T hello-world-$(VERSION).tgz $(HELM_ARTIFACTORY_SB)/hello-world-$(VERSION).tgz
 
