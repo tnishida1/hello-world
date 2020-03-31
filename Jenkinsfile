@@ -6,7 +6,6 @@ pipeline {
         stage('Images Harbor') {
             steps {
                 container('skaffold') {
-                    sh "sleep 500"
                     sh "make artifactory_creds"
                     sh "printenv"
                     sh "make build"
