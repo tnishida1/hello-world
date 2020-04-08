@@ -6,3 +6,5 @@ build:
     context: .
   - image: goodbye-world
     context: .
+  local:
+    push: false
