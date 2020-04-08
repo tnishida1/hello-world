@@ -1,0 +1,9 @@
+version: 0.2
+env:
+  variables:
+    PROD_NAMESPACE: takumin-lab-prod
+    ISTIO_DOMAIN: takumin-lab-prod.lead.prod.liatr.io
+phases:
+  build:
+    commands:
+    - skaffold deploy -a image.json -n "${PROD_NAMESPACE}"

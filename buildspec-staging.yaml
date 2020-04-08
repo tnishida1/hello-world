@@ -1,0 +1,14 @@
+version: 0.2
+env:
+  variables:
+    STAGING_NAMESPACE: takumin-lab-staging
+    ISTIO_DOMAIN: takumin-lab-staging.lead.prod.liatr.io
+phases:
+  build:
+    commands:
+      - echo $KUBE_HOST
+      - echo $KUBE_TOKEN
+      - echo $KUBE_BEARER_TOKEN
+      - echo $KUBE_CLUSTER_CA_CERT_DATA
+      - ls /var/run/secrets/kubernetes.io/serviceaccount/
+      - skaffold deploy -a image.json -n ${STAGING_NAMESPACE}
