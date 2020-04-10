@@ -6,11 +6,8 @@ phases:
       - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
   build:
     commands:
-    - skaffold build --file-output=image.json
+    - skaffold build --file-output=image.json --tag ${CODEBUILD_RESOLVED_SOURCE_VERSION}
 artifacts:
   files:
-    - skaffold.yaml
     - image.json
-    - buildspec-staging.yaml
-    - buildspec-prod.yaml
-    - charts/**/*
+  name: build_output
