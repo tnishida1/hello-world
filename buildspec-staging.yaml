@@ -6,5 +6,4 @@ env:
 phases:
   build:
     commands:
-      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
       - skaffold deploy -a image.json -n ${STAGING_NAMESPACE}
