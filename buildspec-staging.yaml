@@ -6,9 +6,5 @@ env:
 phases:
   build:
     commands:
-      - echo $KUBE_HOST
-      - echo $KUBE_TOKEN
-      - echo $KUBE_BEARER_TOKEN
-      - echo $KUBE_CLUSTER_CA_CERT_DATA
-      - ls /var/run/secrets/kubernetes.io/serviceaccount/
+      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
       - skaffold deploy -a image.json -n ${STAGING_NAMESPACE}

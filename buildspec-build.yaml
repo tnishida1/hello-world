@@ -7,6 +7,7 @@ phases:
   build:
     commands:
     - skaffold build --file-output=image.json
+    - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
 artifacts:
   files:
     - skaffold.yaml
