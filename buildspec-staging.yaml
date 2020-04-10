@@ -1,8 +1,4 @@
 version: 0.2
-env:
-  variables:
-    STAGING_NAMESPACE: takumin-lab-staging
-    ISTIO_DOMAIN: takumin-lab-staging.lead.prod.liatr.io
 phases:
   build:
     commands:
