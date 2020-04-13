@@ -10,4 +10,7 @@ phases:
 artifacts:
   files:
     - image.json
-  name: build_output
+    - skaffold.yaml
+    - buildspec-staging.yaml
+    - buildspec-prod.yaml
+
